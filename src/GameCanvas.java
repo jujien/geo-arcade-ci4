@@ -9,7 +9,7 @@ public class GameCanvas extends JPanel {
 
     BufferedImage background;
     BufferedImage player;
-    BufferedImage square;
+    Square square;
     BufferedImage backBuffered;
     Graphics graphics;
     int positionPlayerX;
@@ -19,6 +19,7 @@ public class GameCanvas extends JPanel {
     public GameCanvas() {
         this.setSize(400, 600);
         this.setVisible(true);
+
         this.backBuffered = new BufferedImage(400, 600, BufferedImage.TYPE_4BYTE_ABGR);
         this.graphics = this.backBuffered.getGraphics();
         //Load Images
@@ -34,7 +35,7 @@ public class GameCanvas extends JPanel {
         }
 
         try {
-            this.square = ImageIO.read(new File("resources/square/enemy_square_small.png"));
+            this.square = new Square(ImageIO.read(new File("resources/square/enemy_square_small.png")), 20, 0, 0, 4);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -42,18 +43,18 @@ public class GameCanvas extends JPanel {
 
     @Override
     protected void paintComponent(Graphics g) {
-        //Draw images
+        //Draw image
         g.drawImage(this.backBuffered, 0, 0, null);
     }
 
-    public void run() {
-        this.positionSquareY += 5;
+    public void runAll() {
+        this.square.run();
     }
 
     public void renderAll() {
         this.graphics.drawImage(this.background, 0, 0, null);
         this.graphics.drawImage(this.player, this.positionPlayerX, this.positionPlayerY, null);
-        this.graphics.drawImage(this.square, 0, this.positionSquareY, null);
+        this.square.render(this.graphics);
         this.repaint();
     }
 }
