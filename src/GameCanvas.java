@@ -4,17 +4,20 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Vector;
 
 public class GameCanvas extends JPanel {
 
     BufferedImage background;
     BufferedImage player;
-    Square square;
+    Vector<Square> squareVector;
     BufferedImage backBuffered;
     Graphics graphics;
+
     int positionPlayerX;
     int positionPlayerY;
-    int positionSquareY;
+
+    int countSquare = 0;
 
     public GameCanvas() {
         this.setSize(400, 600);
@@ -34,11 +37,7 @@ public class GameCanvas extends JPanel {
             e.printStackTrace();
         }
 
-        try {
-            this.square = new Square(ImageIO.read(new File("resources/square/enemy_square_small.png")), 20, 0, 0, 4);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        this.squareVector = new Vector<>();
     }
 
     @Override
@@ -48,13 +47,25 @@ public class GameCanvas extends JPanel {
     }
 
     public void runAll() {
-        this.square.run();
+        if (this.countSquare >= 30) {
+            try {
+                Square square = new Square(ImageIO.read(new File("resources/square/enemy_square_small.png")), 20, 0, 0, 4);
+                this.squareVector.add(square);
+                this.countSquare = 0;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            this.countSquare += 1;
+        }
+
+        this.squareVector.forEach(square -> square.run());
     }
 
     public void renderAll() {
         this.graphics.drawImage(this.background, 0, 0, null);
         this.graphics.drawImage(this.player, this.positionPlayerX, this.positionPlayerY, null);
-        this.square.render(this.graphics);
+        this.squareVector.forEach(square -> square.render(graphics));
         this.repaint();
     }
 }
