@@ -74,13 +74,15 @@ public class GameCanvas extends JPanel {
 
     private void createSquare() {
         if (this.countSquare >= 30) {
-            try {
-                Square square = new Square(ImageIO.read(new File("resources/square/enemy_square_small.png")), 20, 0, 0, 4);
-                this.squareVector.add(square);
-                this.countSquare = 0;
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            Square square = new Square(Utils.loadImage("resources/square/enemy_square_small.png"), 20, 0, 0, 4);
+            this.squareVector.add(square);
+            this.countSquare = 0;
+//            try {
+//
+//
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
         } else {
             this.countSquare += 1;
         }
