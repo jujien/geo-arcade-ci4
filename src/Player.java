@@ -13,6 +13,8 @@ public class Player {
     }
 
     public void render(Graphics graphics) {
-        graphics.drawImage(this.image, this.x, this.y, null);
+        if (this.image != null) {
+            graphics.drawImage(this.image, this.x, this.y, null);
+        }
     }
 }

@@ -8,6 +8,7 @@ public class GameWindow extends JFrame {
 
     GameCanvas gameCanvas;
     private long lastTime = 0;
+    public String name;
 
     public GameWindow() {
         this.setup();
@@ -34,8 +35,25 @@ public class GameWindow extends JFrame {
         this.addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseMoved(MouseEvent e) {
-                gameCanvas.player.x = e.getX();
-                gameCanvas.player.y = e.getY();
+                if (e.getX() > 0 && e.getX() < 400 - 40) {
+                    gameCanvas.player.x = e.getX();
+                } else if (e.getX() < 0) {
+                    gameCanvas.player.x = 0;
+                } else {
+                    gameCanvas.player.x = 400 - 40;
+                }
+                if (e.getY() > 0 && e.getY() > 600 - 40) {
+                    gameCanvas.player.y = e.getY();
+                } else if (e.getY() < 0 ) {
+                    gameCanvas.player.y = 0;
+                } else {
+                    gameCanvas.player.y = 600 - 40;
+                }
+//                if(e.getX()<gameCanvas.background.getWidth()-75 && e.getY()< gameCanvas.background.getHeight()- 50)
+//                gameCanvas.player.x = e.getX();
+//                gameCanvas.player.y = e.getY();
+
+
             }
         });
     }

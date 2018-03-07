@@ -14,6 +14,7 @@ public class Bullet {
         this.y = y;
         this.dx = dx;
         this.dy = dy;
+
     }
 
     public void run() {
