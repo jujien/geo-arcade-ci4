@@ -14,6 +14,7 @@ public class GameCanvas extends JPanel {
     Vector<Bullet> bulletVector;
     BufferedImage backBuffered;
     Graphics graphics;
+    EnemySqawner enemySqawner;
 
     int countSquare = 0;
     int countBullet = 0;
