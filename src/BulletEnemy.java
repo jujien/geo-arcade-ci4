@@ -1,28 +1,16 @@
-import java.awt.*;
-import java.awt.image.BufferedImage;
-
-public class BulletEnemy {
-    public BufferedImage image;
-    public int x;
-    public int y;
+public class BulletEnemy extends GameObject {
     public int dx;
     public int dy;
 
-    public BulletEnemy(BufferedImage image, int x, int y, int dx, int dy) {
-        this.image = image;
-        this.x = x;
-        this.y = y;
-        this.dx = dx;
-        this.dy = dy;
+    public BulletEnemy() {
+        this.image = Utils.loadImage("resources/square/enemy_square_bullet.png");
 
     }
 
+    @Override
     public void run() {
+        super.run();
         this.x += this.dx;
         this.y += this.dy;
-    }
-
-    public void render(Graphics graphics) {
-        graphics.drawImage(this.image, this.x, this.y, null);
     }
 }
