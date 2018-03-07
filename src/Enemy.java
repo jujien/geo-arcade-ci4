@@ -48,5 +48,6 @@ public class Enemy {
 
     public void render(Graphics graphics) {
         graphics.drawImage(this.image, this.x, this.y, null);
+        this.bulletEnemies.forEach(bulletEnemy -> bulletEnemy.render(graphics));
     }
 }

@@ -26,6 +26,7 @@ public class GameCanvas extends JPanel {
         this.setupPlayer();
         this.squareVector = new Vector<>();
         this.bulletVector = new Vector<>();
+        this.enemySqawner = new EnemySqawner();
     }
 
     private void setup() {
@@ -63,6 +64,7 @@ public class GameCanvas extends JPanel {
         // Shoot Bullet
         this.runBullets();
         this.runSquares();
+        this.enemySqawner.run();
     }
 
     private void runSquares() {
@@ -108,6 +110,7 @@ public class GameCanvas extends JPanel {
         this.player.render(this.graphics);
         this.squareVector.forEach(square -> square.render(graphics));
         this.bulletVector.forEach(bullet -> bullet.render(graphics));
+        this.enemySqawner.render(this.graphics);
         this.repaint();
     }
 }
