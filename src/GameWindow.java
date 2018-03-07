@@ -42,17 +42,13 @@ public class GameWindow extends JFrame {
                 } else {
                     gameCanvas.player.x = 400 - 40;
                 }
-                if (e.getY() > 0 && e.getY() > 600 - 40) {
+                if (e.getY() > 0 && e.getY() < 600 - 40) {
                     gameCanvas.player.y = e.getY();
                 } else if (e.getY() < 0 ) {
                     gameCanvas.player.y = 0;
                 } else {
                     gameCanvas.player.y = 600 - 40;
                 }
-//                if(e.getX()<gameCanvas.background.getWidth()-75 && e.getY()< gameCanvas.background.getHeight()- 50)
-//                gameCanvas.player.x = e.getX();
-//                gameCanvas.player.y = e.getY();
-
 
             }
         });
