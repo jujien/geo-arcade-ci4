@@ -5,6 +5,8 @@ public class MatrixSquare extends GameObject{
     private Vector<Square> squares = new Vector<>();
     public int dx;
     public int dy;
+    private int count = 0;
+    private boolean collision = false;
 
     public void create() {
         for (int i = 0; i < 3; i++) {
@@ -23,12 +25,30 @@ public class MatrixSquare extends GameObject{
     @Override
     public void run() {
         super.run();
-        if (this.x > 0 && this.x < 400 - 5 * 20 - 4 * 20) {
+        if (this.x <= 0 ) {
+            if (this.count >= 10) {
+                this.dx = 3;
+                this.count = 0;
+                this.dy = 0;
+                this.collision = true;
+            } else {
+                this.dx = 0;
+                this.count += 1;
+                this.dy = 3;
+            }
 
-        } else if (this.x <= 0) {
-            this.dx = Math.abs(this.dx);
-        } else {
-            this.dx = -this.dx;
+        }
+        if (this.x >= 400 - 20 * 5 - 20 * 4){
+            if (this.count >= 10) {
+                this.dx = -3;
+                this.count = 0;
+                this.dy = 0;
+            } else {
+                this.dx = 0;
+                this.count += 1;
+                this.dy = 3;
+            }
+
         }
         this.x += this.dx;
         this.y += this.dy;
