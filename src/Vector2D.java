@@ -25,8 +25,8 @@ public class Vector2D {
 
 
     public Vector2D addUp(float x, float y) {
-        this.x += this.x;
-        this.y += this.y;
+        this.x += x;
+        this.y += y;
         return this;
     }
 
@@ -43,8 +43,8 @@ public class Vector2D {
     }
 
     public Vector2D substractBy(float x, float y) {
-        this.x -= this.x;
-        this.y -= this.y;
+        this.x -= x;
+        this.y -= y;
         return this;
     }
 

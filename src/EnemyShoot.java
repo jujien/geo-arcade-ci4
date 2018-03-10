@@ -1,17 +1,13 @@
 public class EnemyShoot {
 
-    private int count = 0;
+    private FrameCounter frameCounter = new FrameCounter(10);
 
     public void run(Enemy enemy) {
-        if (this.count >= 10) {
+        if (this.frameCounter.run()) {
             BulletEnemy bulletEnemy = new BulletEnemy();
-            bulletEnemy.x = enemy.x;
-            bulletEnemy.y = enemy.y;
-            bulletEnemy.dy = 7;
+            bulletEnemy.position.set(enemy.position);
+            bulletEnemy.velocity.set(0, 6);
             GameObject.add(bulletEnemy);
-            this.count = 0;
-        } else {
-            this.count += 1;
         }
     }
 }

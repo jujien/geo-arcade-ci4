@@ -13,8 +13,8 @@ public class EnemySqawner extends GameObject {
         super.run();
         if (this.count >= 80) {
             Enemy enemy = new Enemy();
-            enemy.x = random.nextInt(400);
-            enemy.dy = random.nextInt(3) + 1;
+            enemy.position.set(random.nextInt(400), 0);
+            enemy.velocity.set(0, random.nextInt(3) + 1);
             GameObject.add(enemy);
             this.count = 0;
         } else {
