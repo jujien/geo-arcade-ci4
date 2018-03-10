@@ -6,7 +6,6 @@ public class MatrixSquare extends GameObject{
     public int dx;
     public int dy;
     private int count = 0;
-    private boolean collision = false;
 
     public void create() {
         for (int i = 0; i < 3; i++) {
@@ -30,7 +29,6 @@ public class MatrixSquare extends GameObject{
                 this.dx = 3;
                 this.count = 0;
                 this.dy = 0;
-                this.collision = true;
             } else {
                 this.dx = 0;
                 this.count += 1;
