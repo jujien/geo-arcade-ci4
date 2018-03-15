@@ -1,3 +1,5 @@
+package base;
+
 public class Vector2D {
     public float x;
     public float y;
@@ -41,7 +43,7 @@ public class Vector2D {
     }
 
     public Vector2D add(Vector2D vector2D) {
-        //return new Vector2D(this.x + vector2D.x, this.y + vector2D.y);
+        //return new base.Vector2D(this.x + vector2D.x, this.y + vector2D.y);
         return this.add(vector2D.x, vector2D.y);
     }
 

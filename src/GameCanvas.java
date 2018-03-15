@@ -1,3 +1,11 @@
+import base.GameObject;
+import game.background.Background;
+import game.enemy.EnemySqawner;
+import game.player.Player;
+import game.square.circle.CircleSquare;
+import game.square.matrix.MatrixSquare;
+import game.square.SquareSpawner;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;

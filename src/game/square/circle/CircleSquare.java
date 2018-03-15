@@ -1,3 +1,9 @@
+package game.square.circle;
+
+import base.GameObject;
+import base.Vector2D;
+import game.square.Square;
+
 /**
  * Created by huynq on 3/15/18.
  */

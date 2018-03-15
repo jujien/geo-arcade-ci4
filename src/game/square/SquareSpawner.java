@@ -1,3 +1,8 @@
+package game.square;
+
+import base.FrameCounter;
+import base.GameObject;
+
 import java.util.Random;
 
 public class SquareSpawner extends GameObject {

@@ -1,3 +1,8 @@
+package game.player.bullet;
+
+import base.GameObject;
+import game.player.Player;
+
 public class PlayerShoot {
 
     private int count = 0;

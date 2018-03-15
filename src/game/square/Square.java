@@ -1,3 +1,8 @@
+package game.square;
+
+import base.GameObject;
+import base.Vector2D;
+
 public class Square extends GameObject {
 
     public Vector2D velocity;

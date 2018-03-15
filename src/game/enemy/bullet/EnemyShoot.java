@@ -1,3 +1,9 @@
+package game.enemy.bullet;
+
+import base.FrameCounter;
+import base.GameObject;
+import game.enemy.Enemy;
+
 public class EnemyShoot {
 
     private FrameCounter frameCounter = new FrameCounter(10);

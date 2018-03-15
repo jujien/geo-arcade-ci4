@@ -1,3 +1,7 @@
+package base;
+
+import game.player.Player;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Vector;

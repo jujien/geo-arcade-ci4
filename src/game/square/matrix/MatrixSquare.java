@@ -1,6 +1,12 @@
+package game.square.matrix;
+
+import base.GameObject;
+import base.Vector2D;
+import game.square.Square;
+
 import java.util.Vector;
 
-public class MatrixSquare extends GameObject{
+public class MatrixSquare extends GameObject {
 
     private Vector<Square> squares;
     public Vector2D velocity;

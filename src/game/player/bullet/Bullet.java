@@ -1,3 +1,8 @@
+package game.player.bullet;
+
+import base.GameObject;
+import base.Vector2D;
+
 public class Bullet extends GameObject {
 
     public Vector2D velocity;

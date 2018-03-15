@@ -1,3 +1,7 @@
+package physic;
+
+import base.Vector2D;
+
 public class BoxCollider {
     public Vector2D position;
     private float width;

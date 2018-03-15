@@ -1,3 +1,8 @@
+package game.player;
+
+import base.GameObject;
+import game.player.bullet.PlayerShoot;
+
 public class Player extends GameObject {
 
     private PlayerShoot playerShoot;

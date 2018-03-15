@@ -1,3 +1,7 @@
+package game.enemy;
+
+import base.GameObject;
+
 import java.util.Random;
 
 public class EnemySqawner extends GameObject {
