@@ -1,6 +1,7 @@
 package game.square.matrix;
 
 import base.GameObject;
+import base.GameObjectManager;
 import base.Vector2D;
 import game.square.Square;
 
@@ -24,7 +25,7 @@ public class MatrixSquare extends GameObject {
                 square.position.set(this.position.add(j * (20 + 20), i * (20 + 20)));
                 square.velocity.set(this.velocity);
                 this.squares.add(square);
-                GameObject.add(square);
+                GameObjectManager.instance.add(square);
             }
         }
     }

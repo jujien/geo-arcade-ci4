@@ -1,6 +1,7 @@
 package game.enemy;
 
 import base.GameObject;
+import base.GameObjectManager;
 
 import java.util.Random;
 
@@ -18,8 +19,8 @@ public class EnemySqawner extends GameObject {
         if (this.count >= 80) {
             Enemy enemy = new Enemy();
             enemy.position.set(random.nextInt(400), 0);
-            enemy.velocity.set(0, random.nextInt(3) + 1);
-            GameObject.add(enemy);
+            enemy.velocity.set(0, random.nextInt(2) + 1);
+            GameObjectManager.instance.add(enemy);
             this.count = 0;
         } else {
             this.count += 1;

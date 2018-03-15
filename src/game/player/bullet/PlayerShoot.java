@@ -1,6 +1,7 @@
 package game.player.bullet;
 
 import base.GameObject;
+import base.GameObjectManager;
 import game.player.Player;
 
 public class PlayerShoot {
@@ -12,7 +13,7 @@ public class PlayerShoot {
             Bullet bullet = new Bullet();
             bullet.position.set(player.position);
             bullet.velocity.set(0, -4);
-            GameObject.add(bullet);
+            GameObjectManager.instance.add(bullet);
             this.count = 0;
         } else {
             this.count += 1;
