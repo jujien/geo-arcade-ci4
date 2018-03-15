@@ -2,6 +2,7 @@ package game.square;
 
 import base.GameObject;
 import base.Vector2D;
+import utils.Utils;
 
 public class Square extends GameObject {
 

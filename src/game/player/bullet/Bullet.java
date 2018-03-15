@@ -2,6 +2,8 @@ package game.player.bullet;
 
 import base.GameObject;
 import base.Vector2D;
+import physic.BoxCollider;
+import utils.Utils;
 
 public class Bullet extends GameObject {
 
