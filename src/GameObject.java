@@ -36,4 +36,12 @@ public class GameObject {
             graphics.drawImage(this.image, (int)this.position.x - this.image.getWidth() / 2, (int)this.position.y - this.image.getHeight() / 2, null);
         }
     }
+
+    public static Player getPlayer() {
+        return (Player) vector
+                .stream()
+                .filter(gameObject -> gameObject instanceof Player) //duyet tat ca phan tu sao cho thoa dien kien truyen (thuc chat true || false) vao thi lay
+                .findFirst() //phan tu dau tien
+                .orElse(null); // neu ko lay dc tra null
+    }
 }

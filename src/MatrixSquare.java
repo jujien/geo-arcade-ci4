@@ -2,9 +2,14 @@ import java.util.Vector;
 
 public class MatrixSquare extends GameObject{
 
-    private Vector<Square> squares = new Vector<>();
-    public Vector2D velocity = new Vector2D();
-    private int count = 0;
+    private Vector<Square> squares;
+    public Vector2D velocity;
+    private int count;
+
+    public MatrixSquare() {
+       this.squares = new Vector<>();
+       this.velocity = new Vector2D();
+    }
 
     public void create() {
         for (int i = 0; i < 3; i++) {

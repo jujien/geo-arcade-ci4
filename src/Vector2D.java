@@ -31,6 +31,8 @@ public class Vector2D {
     }
 
     public Vector2D addUp(Vector2D vector2D) {
+        this.x += vector2D.x;
+        this.y += vector2D.y;
         return this.addUp(vector2D.x, vector2D.y);
     }
 
@@ -39,6 +41,7 @@ public class Vector2D {
     }
 
     public Vector2D add(Vector2D vector2D) {
+        //return new Vector2D(this.x + vector2D.x, this.y + vector2D.y);
         return this.add(vector2D.x, vector2D.y);
     }
 

@@ -15,6 +15,16 @@ public class GameCanvas extends JPanel {
         this.setupPlayer();
         GameObject.add(new SquareSpawner());
         GameObject.add(new EnemySqawner());
+        this.setupMatrix();
+        this.setCircleSquare();
+    }
+
+    private void setup() {
+        this.setSize(400, 600);
+        this.setVisible(true);
+    }
+
+    private void setupMatrix() {
         MatrixSquare matrixSquare = new MatrixSquare();
         matrixSquare.position.set(20, 20);
         matrixSquare.velocity.set(3, 0);
@@ -22,9 +32,11 @@ public class GameCanvas extends JPanel {
         GameObject.add(matrixSquare);
     }
 
-    private void setup() {
-        this.setSize(400, 600);
-        this.setVisible(true);
+    private void setCircleSquare() {
+        CircleSquare circleSquare = new CircleSquare();
+        circleSquare.position.set(100, 100);
+        circleSquare.create();
+        GameObject.add(circleSquare);
     }
 
     private void setupBackBuffered() {
