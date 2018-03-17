@@ -11,7 +11,6 @@ import game.square.Square;
 public class CircleSquare extends GameObject {
 
     public CircleSquare() {
-
     }
 
     public void create() {

@@ -1,6 +1,7 @@
 import base.GameObjectManager;
 import game.background.Background;
 import game.enemy.EnemySqawner;
+import game.enemyhard.EnemyHard;
 import game.player.Player;
 import game.square.circle.CircleSquare;
 import game.square.matrix.MatrixSquare;
@@ -28,6 +29,7 @@ public class GameCanvas extends JPanel {
         GameObjectManager.instance.add(new EnemySqawner());
         this.setupMatrix();
         this.setCircleSquare();
+        this.setupEnemyHard();
     }
 
     private void setup() {
@@ -65,6 +67,13 @@ public class GameCanvas extends JPanel {
         Background background = new Background();
         background.position.set(200, 300);
         GameObjectManager.instance.add(background);
+    }
+
+    private void setupEnemyHard() {
+        EnemyHard enemyHard = new EnemyHard();
+        enemyHard.velocity.set(0, 1);
+        enemyHard.position.set(0, 50);
+        GameObjectManager.instance.add(enemyHard);
     }
 
     @Override
