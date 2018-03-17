@@ -3,12 +3,13 @@ package game.player.bullet;
 import base.GameObject;
 import base.Vector2D;
 import physic.BoxCollider;
+import physic.PhysicBody;
 import utils.Utils;
 
-public class Bullet extends GameObject {
+public class Bullet extends GameObject implements PhysicBody {
 
     public Vector2D velocity;
-    public BoxCollider boxCollider;
+    private BoxCollider boxCollider;
     private HitSquare hitSquare;
 
     public Bullet() {
@@ -29,5 +30,10 @@ public class Bullet extends GameObject {
     public void getHit() {
         this.isAlive = false;
         System.out.println("hit square");
+    }
+
+    @Override
+    public BoxCollider getBoxCollider() {
+        return this.boxCollider;
     }
 }
