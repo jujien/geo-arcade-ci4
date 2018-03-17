@@ -59,31 +59,29 @@ public class GameObjectManager {
 
     }
 
-//    public Square checkCollision(BoxCollider other) { //bullet player vs square
-//        return (Square) this.vector
-//                .stream()
-//                .filter(gameObject -> gameObject.isAlive) //lay object con song
-//                .filter(gameObject -> gameObject instanceof Square) //Lay con Square
-//                .filter(gameObject -> {
-//                    BoxCollider boxCollider = ((Square) gameObject).boxCollider; //Lay BoxCollider
-//                    return boxCollider.checkCollider(other); // lay square dang co box chong len nhau
-//                })
-//                .findFirst()
-//                .orElse(null);
-//    }
-//
-//    public Enemy checkCollisionEnemy(BoxCollider other) { //bullet player vs enemy
-//        return (Enemy) this.vector
-//                .stream()
-//                .filter(gameObject -> gameObject.isAlive) //lay object con song
-//                .filter(gameObject -> gameObject instanceof Enemy) //Lay con Square
-//                .filter(gameObject -> {
-//                    BoxCollider boxCollider = ((Square) gameObject).boxCollider; //Lay BoxCollider
-//                    return boxCollider.checkCollider(other); // lay square dang co box chong len nhau
-//                })
-//                .findFirst()
-//                .orElse(null);
-//    }
+    public <T extends GameObject> T recycle(Class<T> cls) {
+        T t = (T) this.vector
+                .stream()
+                .filter(gameObject -> !gameObject.isAlive)
+                .filter(gameObject -> cls.isInstance(gameObject))
+                .findFirst()
+                .orElse(null);
+        if (t == null) {
+            try {
+                t = cls.newInstance();
+                this.add(t);
+                return t;
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+                return null;
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+        t.isAlive = true;
+        return t;
+    }
 
     public void add(GameObject gameObject) {
         this.temp.add(gameObject);

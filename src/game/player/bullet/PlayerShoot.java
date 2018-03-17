@@ -10,10 +10,9 @@ public class PlayerShoot {
 
     public void run(Player player) {
         if (this.count >= 30) {
-            Bullet bullet = new Bullet();
+            Bullet bullet = GameObjectManager.instance.recycle(Bullet.class);
             bullet.position.set(player.position);
             bullet.velocity.set(0, -4);
-            GameObjectManager.instance.add(bullet);
             this.count = 0;
         } else {
             this.count += 1;
