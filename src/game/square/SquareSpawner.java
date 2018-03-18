@@ -23,6 +23,7 @@ public class SquareSpawner extends GameObject {
             square.position.set(random.nextInt(400), 0);
             square.velocity.set(0, random.nextInt(3) + 2);
             GameObjectManager.instance.add(square);
+            this.frameCounter.reset();
         }
     }
 }

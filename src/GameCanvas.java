@@ -26,10 +26,10 @@ public class GameCanvas extends JPanel {
         this.setupBackground();
         this.setupPlayer();
         GameObjectManager.instance.add(new SquareSpawner());
-        GameObjectManager.instance.add(new EnemySqawner());
-        this.setupMatrix();
-        this.setCircleSquare();
-        this.setupEnemyHard();
+//        GameObjectManager.instance.add(new EnemySqawner());
+//        this.setupMatrix();
+//        this.setCircleSquare();
+//        this.setupEnemyHard();
     }
 
     private void setup() {

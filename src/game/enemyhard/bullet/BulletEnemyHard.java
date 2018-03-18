@@ -1,14 +1,14 @@
 package game.enemyhard.bullet;
 
 import base.GameObject;
-import utils.Utils;
+import renderer.ImageRenderer;
 
 public class BulletEnemyHard extends GameObject {
 
     private BulletEnemyHardMove bulletEnemyHardMove;
 
     public BulletEnemyHard() {
-        this.image = Utils.loadImage("resources/square/square_deadly_bullet.png");
+        this.renderer = new ImageRenderer("resources/square/square_deadly_bullet.png");
         this.bulletEnemyHardMove = new BulletEnemyHardMove();
     }
 
