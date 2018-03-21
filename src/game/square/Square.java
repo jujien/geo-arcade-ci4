@@ -1,8 +1,10 @@
 package game.square;
 
 import base.GameObject;
+import base.GameObjectManager;
 import base.Vector2D;
 import game.player.Player;
+import game.square.effect.ExplosionSquare;
 import physic.BoxCollider;
 import physic.HitObject;
 import physic.PhysicBody;
@@ -41,6 +43,8 @@ public class Square extends GameObject implements PhysicBody, HitObject {
 
     @Override
     public void getHit(GameObject gameObject) {
+        ExplosionSquare explosionSquare = GameObjectManager.instance.recycle(ExplosionSquare.class);
+        explosionSquare.create(this.position);
         this.isAlive = false;
 
     }
