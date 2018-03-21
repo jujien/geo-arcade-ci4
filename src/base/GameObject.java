@@ -1,24 +1,34 @@
 package base;
 
+import action.Action;
 import renderer.Renderer;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class GameObject {
     //public BufferedImage image; //chi khai 1 image va hinh anh ko thay doi theo thoi gian
     public Renderer renderer;
     public Vector2D position;
     public boolean isAlive;
+    private List<Action> actions;
 
     public GameObject() {
         this.position = new Vector2D();
         this.isAlive = true;
+        this.actions = new ArrayList<>();
     }
 
 
     public void run() {
+        //chay qua tat ca phan tu va xoa di phan tu thoa man dk truyen vao
+        this.actions.removeIf(action -> action.run(this));
+    }
 
+    public void add(Action action) {
+        this.actions.add(action);
     }
 
     public void render(Graphics graphics) {

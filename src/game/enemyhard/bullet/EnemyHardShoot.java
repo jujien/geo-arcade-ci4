@@ -13,6 +13,7 @@ public class EnemyHardShoot {
             BulletEnemyHard bulletEnemy = new BulletEnemyHard();
             bulletEnemy.position.set(enemy.position);
             GameObjectManager.instance.add(bulletEnemy);
+            this.frameCounter.reset();
         }
     }
 }

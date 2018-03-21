@@ -15,6 +15,7 @@ public class EnemyShoot {
             bulletEnemy.position.set(enemy.position);
             bulletEnemy.velocity.set(0, 4);
             GameObjectManager.instance.add(bulletEnemy);
+            this.frameCounter.reset();
         }
     }
 }

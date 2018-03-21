@@ -16,6 +16,7 @@ public class ExplosionSquare extends GameObject {
     public ExplosionSquare() {
         this.random = new Random();
         this.particleSquares = new ArrayList<>();
+
     }
 
     public void create(Vector2D position) {
