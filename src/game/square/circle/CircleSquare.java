@@ -4,6 +4,7 @@ import base.GameObject;
 import base.GameObjectManager;
 import base.Vector2D;
 import game.square.Square;
+import game.square.attributes.SquareMove;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +31,7 @@ public class CircleSquare extends GameObject {
         for (double angle = 0.0; angle < 360.0; angle+=360.0/15) {
             Square square = GameObjectManager.instance.recycle(Square.class);
             square.position.set((new Vector2D(0, 1)).rotate(angle).multiply(this.radius)).addUp(this.position.x, this.radius);
-            square.velocity.set(this.velocity);
+            square.getAttribute(SquareMove.class).velocity.set(this.velocity);
             this.squares.add(square);
         }
     }
@@ -53,7 +54,7 @@ public class CircleSquare extends GameObject {
         }
         this.position.addUp(this.velocity);
 
-        this.squares.forEach(square -> square.velocity.set(velocity));
+        this.squares.forEach(square -> square.getAttribute(SquareMove.class).velocity.set(velocity));
         this.squares.removeIf(square -> !square.isAlive);
         this.isAlive = !this.squares.isEmpty();
     }

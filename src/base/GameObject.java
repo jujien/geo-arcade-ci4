@@ -12,8 +12,8 @@ public class GameObject {
     public Renderer renderer;
     public Vector2D position;
     public boolean isAlive;
-    private List<AttributeObject> attributeObjects;
-    private List<Action> actions;
+    public List<AttributeObject> attributeObjects;
+    public List<Action> actions;
 
     public GameObject() {
         this.position = new Vector2D();
@@ -30,6 +30,18 @@ public class GameObject {
 
     public void add(Action action) {
         this.actions.add(action);
+    }
+
+    public void add(AttributeObject attributeObject) {
+        this.attributeObjects.add(attributeObject);
+    }
+
+    public <T extends GameObject, A extends AttributeObject<T>> A getAttribute(Class<A> cls) {
+        return (A) this.attributeObjects
+                .stream()
+                .filter(attributeObject -> cls.isInstance(attributeObject))
+                .findFirst()
+                .orElse(null);
     }
 
     public void render(Graphics graphics) {

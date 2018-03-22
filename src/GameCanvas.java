@@ -16,8 +16,6 @@ import java.util.Random;
 
 public class GameCanvas extends JPanel {
 
-    //object
-    Player player;
     BufferedImage backBuffered;
     Graphics graphics;
 
@@ -28,7 +26,6 @@ public class GameCanvas extends JPanel {
         this.setupPlayer();
         this.setupSquare();
         this.setupEnemey();
-//        this.setupEnemyHard();
     }
 
     private void setup() {
@@ -54,9 +51,8 @@ public class GameCanvas extends JPanel {
     }
 
     private void setupPlayer() {
-        this.player = new Player();
-        this.player.position.set(200, 300);
-        GameObjectManager.instance.add(this.player);
+        Player player = GameObjectManager.instance.recycle(Player.class);
+        player.position.set(200, 300);
     }
 
     private void setupBackground() {
@@ -64,13 +60,6 @@ public class GameCanvas extends JPanel {
         background.position.set(200, 300);
         GameObjectManager.instance.add(background);
     }
-
-//    private void setupEnemyHard() {
-//        EnemyHard enemyHard = new EnemyHard();
-//        enemyHard.velocity.set(0, 1);
-//        enemyHard.position.set(0, 50);
-//        GameObjectManager.instance.add(enemyHard);
-//    }
 
     @Override
     protected void paintComponent(Graphics g) {

@@ -6,8 +6,10 @@ import action.SequenceAction;
 import action.WaitAction;
 import base.GameObject;
 import base.GameObjectManager;
+import game.enemy.attributes.Direction;
+import game.enemy.attributes.EnemyMove;
 import game.enemyhard.EnemyHard;
-import game.enemyhard.EnemyHardMove;
+import game.enemyhard.attributes.EnemyHardMove;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,12 +30,12 @@ public class EnemySqawner extends GameObject {
             public boolean run(GameObject owner) {
                 Enemy enemy = GameObjectManager.instance.recycle(Enemy.class);
                 if (random.nextInt(2) == 0) {
-                    enemy.direction = Direction.LEFT_TO_RIGHT;
+                    enemy.getAttribute(EnemyMove.class).direction = Direction.LEFT_TO_RIGHT;
                 } else  {
-                    enemy.direction = Direction.UP_DOWN;
+                    enemy.getAttribute(EnemyMove.class).direction = Direction.UP_DOWN;
                 }
                 enemy.position.set(random.nextInt(400), 20);
-                enemy.velocity.set(random.nextInt(3) + 1, random.nextInt(2) + 1);
+                enemy.getAttribute(EnemyMove.class).velocity.set(random.nextInt(3) + 1, random.nextInt(2) + 1);
                 return true;
             }
         };
@@ -70,8 +72,7 @@ public class EnemySqawner extends GameObject {
             public boolean run(GameObject owner) {
                 EnemyHard enemyHard = GameObjectManager.instance.recycle(EnemyHard.class);
                 enemyHard.position.set(random.nextInt(400), 0);
-                enemyHard.enemyHardMove = new EnemyHardMove();
-                enemyHard.enemyHardMove.velocity.set(random.nextInt(2) + 1, 0);
+                enemyHard.getAttribute(EnemyHardMove.class).velocity.set(random.nextInt(2) + 1, 0);
                 enemyHards.add(enemyHard);
                 return true;
             }

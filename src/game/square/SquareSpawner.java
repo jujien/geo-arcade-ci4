@@ -4,6 +4,7 @@ import action.*;
 import base.FrameCounter;
 import base.GameObject;
 import base.GameObjectManager;
+import game.square.attributes.SquareMove;
 import game.square.circle.CircleSquare;
 import game.square.matrix.MatrixSquare;
 
@@ -23,7 +24,7 @@ public class SquareSpawner extends GameObject {
                 // Tao ra square
                 Square square = GameObjectManager.instance.recycle(Square.class);
                 square.position.set(random.nextInt(400), 0);
-                square.velocity.set(0, random.nextInt(3) + 2);
+                square.getAttribute(SquareMove.class).velocity.set(0, random.nextInt(3) + 2);
                 return true;
             }
 

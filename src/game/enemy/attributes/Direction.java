@@ -1,4 +1,4 @@
-package game.enemy;
+package game.enemy.attributes;
 
 public enum Direction {
     LEFT_TO_RIGHT,

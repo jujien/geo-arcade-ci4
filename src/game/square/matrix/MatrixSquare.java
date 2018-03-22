@@ -4,6 +4,7 @@ import base.GameObject;
 import base.GameObjectManager;
 import base.Vector2D;
 import game.square.Square;
+import game.square.attributes.SquareMove;
 
 import java.util.Vector;
 
@@ -23,7 +24,7 @@ public class MatrixSquare extends GameObject {
             for (int j = 0; j < 5; j++) {
                 Square square = new Square();
                 square.position.set(this.position.add(j * (20 + 20), i * (20 + 20)));
-                square.velocity.set(this.velocity);
+                square.getAttribute(SquareMove.class).velocity.set(this.velocity);
                 this.squares.add(square);
                 GameObjectManager.instance.add(square);
             }
@@ -54,7 +55,7 @@ public class MatrixSquare extends GameObject {
 
         }
         this.position.addUp(this.velocity);
-        this.squares.forEach(square -> square.velocity.set(velocity));
+        this.squares.forEach(square -> square.getAttribute(SquareMove.class).velocity.set(velocity));
         this.squares.removeIf(square -> !square.isAlive);
         this.isAlive = !this.squares.isEmpty();
     }
