@@ -6,13 +6,12 @@ import game.enemyhard.EnemyHard;
 
 public class EnemyHardShoot {
 
-    private FrameCounter frameCounter = new FrameCounter(10);
+    private FrameCounter frameCounter = new FrameCounter(400);
 
     public void run(EnemyHard enemy) {
         if (this.frameCounter.run()) {
-            BulletEnemyHard bulletEnemy = new BulletEnemyHard();
+            BulletEnemyHard bulletEnemy = GameObjectManager.instance.recycle(BulletEnemyHard.class);
             bulletEnemy.position.set(enemy.position);
-            GameObjectManager.instance.add(bulletEnemy);
             this.frameCounter.reset();
         }
     }

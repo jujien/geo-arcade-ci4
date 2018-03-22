@@ -10,6 +10,7 @@ import game.square.SquareSpawner;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.Random;
 
 //Co rat nhieu thang su dung den chuot
 
@@ -25,12 +26,8 @@ public class GameCanvas extends JPanel {
         this.setupBackBuffered();
         this.setupBackground();
         this.setupPlayer();
-        //GameObjectManager.instance.add(new SquareSpawner());
-        SquareSpawner squareSpawner = GameObjectManager.instance.recycle(SquareSpawner.class);
-        squareSpawner.create();
-        GameObjectManager.instance.add(new EnemySqawner());
-//        this.setupMatrix();
-//        this.setCircleSquare();
+        this.setupSquare();
+        this.setupEnemey();
 //        this.setupEnemyHard();
     }
 
@@ -39,19 +36,16 @@ public class GameCanvas extends JPanel {
         this.setVisible(true);
     }
 
-    private void setupMatrix() {
-        MatrixSquare matrixSquare = new MatrixSquare();
-        matrixSquare.position.set(20, 20);
-        matrixSquare.velocity.set(3, 0);
-        matrixSquare.create();
-        GameObjectManager.instance.add(matrixSquare);
+    private void setupEnemey() {
+        EnemySqawner enemySqawner = GameObjectManager.instance.recycle(EnemySqawner.class);
+        enemySqawner.create();
+        enemySqawner.createHard();
     }
 
-    private void setCircleSquare() {
-        CircleSquare circleSquare = new CircleSquare();
-        circleSquare.position.set(100, 100);
-        circleSquare.create();
-        GameObjectManager.instance.add(circleSquare);
+    private void setupSquare() {
+        SquareSpawner squareSpawner = GameObjectManager.instance.recycle(SquareSpawner.class);
+        squareSpawner.createNormal();
+        squareSpawner.createHard();
     }
 
     private void setupBackBuffered() {
@@ -71,12 +65,12 @@ public class GameCanvas extends JPanel {
         GameObjectManager.instance.add(background);
     }
 
-    private void setupEnemyHard() {
-        EnemyHard enemyHard = new EnemyHard();
-        enemyHard.velocity.set(0, 1);
-        enemyHard.position.set(0, 50);
-        GameObjectManager.instance.add(enemyHard);
-    }
+//    private void setupEnemyHard() {
+//        EnemyHard enemyHard = new EnemyHard();
+//        enemyHard.velocity.set(0, 1);
+//        enemyHard.position.set(0, 50);
+//        GameObjectManager.instance.add(enemyHard);
+//    }
 
     @Override
     protected void paintComponent(Graphics g) {

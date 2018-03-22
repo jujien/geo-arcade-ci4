@@ -36,9 +36,9 @@ public class MatrixSquare extends GameObject {
         if (this.position.x <= 0 ) {
             if (this.count >= 10) {
                 this.count = 0;
-                this.velocity.set(3, 0);
+                this.velocity.set(1, 0);
             } else {
-                this.velocity.set(0, 3);
+                this.velocity.set(0, 1);
                 this.count += 1;
             }
 
@@ -46,14 +46,16 @@ public class MatrixSquare extends GameObject {
         if (this.position.x >= 400 - 20 * 5 - 20 * 4){
             if (this.count >= 10) {
                 this.count = 0;
-                this.velocity.set(-3, 0);
+                this.velocity.set(-1, 0);
             } else {
-                this.velocity.set(0, 3);
+                this.velocity.set(0, 1);
                 this.count += 1;
             }
 
         }
         this.position.addUp(this.velocity);
         this.squares.forEach(square -> square.velocity.set(velocity));
+        this.squares.removeIf(square -> !square.isAlive);
+        this.isAlive = !this.squares.isEmpty();
     }
 }

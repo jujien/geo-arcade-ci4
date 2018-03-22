@@ -7,14 +7,13 @@ import game.enemy.Enemy;
 
 public class EnemyShoot {
 
-    private FrameCounter frameCounter = new FrameCounter(50);
+    private FrameCounter frameCounter = new FrameCounter(40);
 
     public void run(Enemy enemy) {
         if (this.frameCounter.run()) {
-            BulletEnemy bulletEnemy = new BulletEnemy();
+            BulletEnemy bulletEnemy = GameObjectManager.instance.recycle(BulletEnemy.class);
             bulletEnemy.position.set(enemy.position);
             bulletEnemy.velocity.set(0, 4);
-            GameObjectManager.instance.add(bulletEnemy);
             this.frameCounter.reset();
         }
     }

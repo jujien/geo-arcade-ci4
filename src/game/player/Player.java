@@ -2,12 +2,17 @@ package game.player;
 
 import base.FrameCounter;
 import base.GameObject;
+import game.enemy.Enemy;
+import game.enemy.bullet.BulletEnemy;
+import game.enemyhard.EnemyHard;
+import game.enemyhard.bullet.BulletEnemyHard;
 import game.player.bullet.PlayerShoot;
 import game.square.Square;
 import input.MouseMotionInput;
 import physic.BoxCollider;
 import physic.HitObject;
 import physic.PhysicBody;
+import physic.RunHitObject;
 import renderer.AnimationRenderer;
 import renderer.ImageRenderer;
 import renderer.Renderer;
@@ -21,6 +26,7 @@ public class Player extends GameObject implements PhysicBody, HitObject {
     private BoxCollider boxCollider = new BoxCollider(40, 40);
     private FrameCounter frameCounter;
     private boolean isAnimation;
+    private RunHitObject runHitObject;
 
     public Player() {
         this.imageRenderer = new ImageRenderer("resources/player/straight.png");
@@ -36,6 +42,13 @@ public class Player extends GameObject implements PhysicBody, HitObject {
         this.frameCounter = new FrameCounter(50);
         this.renderer = this.imageRenderer;
         this.playerShoot = new PlayerShoot();
+        this.runHitObject = new RunHitObject(
+                Enemy.class,
+                EnemyHard.class,
+                BulletEnemy.class,
+                Square.class,
+                BulletEnemyHard.class
+        );
     }
 
     @Override
@@ -51,6 +64,7 @@ public class Player extends GameObject implements PhysicBody, HitObject {
                 this.frameCounter.reset();
             }
         }
+        this.runHitObject.run(this);
     }
 
     @Override

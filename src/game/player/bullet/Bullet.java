@@ -6,6 +6,7 @@ import base.Vector2D;
 import game.enemy.Enemy;
 import game.enemy.bullet.BulletEnemy;
 import game.enemyhard.EnemyHard;
+import game.enemyhard.bullet.BulletEnemyHard;
 import game.square.Square;
 import physic.BoxCollider;
 import physic.HitObject;
@@ -25,7 +26,11 @@ public class Bullet extends GameObject implements PhysicBody, HitObject {
         this.velocity = new Vector2D();
         this.boxCollider = new BoxCollider(10, 10);
         this.runHitObject = new RunHitObject(
-                Square.class
+                Square.class,
+                Enemy.class,
+                EnemyHard.class,
+                BulletEnemy.class,
+                BulletEnemyHard.class
         );
     }
 
@@ -62,10 +67,9 @@ public class Bullet extends GameObject implements PhysicBody, HitObject {
 
     @Override
     public void getHit(GameObject gameObject) { // paramter la mot con gameObject bi va cham
-        if (gameObject instanceof Square) { //neu no va cham vs square
-            System.out.println("Square");
-        }
         this.isAlive = false; // nhung con chet van con tren vector gameObject -> lan chiem bo nho
+        ExplosionBullet explosionBullet = GameObjectManager.instance.recycle(ExplosionBullet.class);
+        explosionBullet.create(this.position);
     }
 
     @Override
