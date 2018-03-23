@@ -6,7 +6,9 @@ import game.player.Player;
 import game.square.circle.CircleSquare;
 import game.square.matrix.MatrixSquare;
 import game.square.SquareSpawner;
+import utils.AudioUtils;
 
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -19,12 +21,15 @@ public class GameCanvas extends JPanel {
     Player player;
     BufferedImage backBuffered;
     Graphics graphics;
+    private Clip clip;
 
     public GameCanvas() {
         this.setup();
         this.setupBackBuffered();
         this.setupBackground();
         this.setupPlayer();
+        this.clip = AudioUtils.instance.loadSound("resources/sound/bgm/bgmwav.wav");
+        this.clip.loop(-1); //dien tru -1 thi clip hieu rang chay vo han
         //GameObjectManager.instance.add(new SquareSpawner());
         SquareSpawner squareSpawner = GameObjectManager.instance.recycle(SquareSpawner.class);
         squareSpawner.create();
