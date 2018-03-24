@@ -1,14 +1,6 @@
 import base.GameObjectManager;
-import game.background.Background;
-import game.enemy.EnemySqawner;
-import game.enemyhard.EnemyHard;
-import game.player.Player;
-import game.square.circle.CircleSquare;
-import game.square.matrix.MatrixSquare;
-import game.square.SquareSpawner;
-import utils.AudioUtils;
+import scence.SceneManager;
 
-import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -17,26 +9,13 @@ import java.awt.image.BufferedImage;
 
 public class GameCanvas extends JPanel {
 
-    //object
-    Player player;
+
     BufferedImage backBuffered;
     Graphics graphics;
-    private Clip clip;
 
     public GameCanvas() {
         this.setup();
         this.setupBackBuffered();
-        this.setupBackground();
-        this.setupPlayer();
-        this.clip = AudioUtils.instance.loadSound("resources/sound/bgm/bgmwav.wav");
-        this.clip.loop(-1); //dien tru -1 thi clip hieu rang chay vo han
-        //GameObjectManager.instance.add(new SquareSpawner());
-        SquareSpawner squareSpawner = GameObjectManager.instance.recycle(SquareSpawner.class);
-        squareSpawner.create();
-        GameObjectManager.instance.add(new EnemySqawner());
-//        this.setupMatrix();
-//        this.setCircleSquare();
-//        this.setupEnemyHard();
     }
 
     private void setup() {
@@ -44,43 +23,10 @@ public class GameCanvas extends JPanel {
         this.setVisible(true);
     }
 
-    private void setupMatrix() {
-        MatrixSquare matrixSquare = new MatrixSquare();
-        matrixSquare.position.set(20, 20);
-        matrixSquare.velocity.set(3, 0);
-        matrixSquare.create();
-        GameObjectManager.instance.add(matrixSquare);
-    }
-
-    private void setCircleSquare() {
-        CircleSquare circleSquare = new CircleSquare();
-        circleSquare.position.set(100, 100);
-        circleSquare.create();
-        GameObjectManager.instance.add(circleSquare);
-    }
 
     private void setupBackBuffered() {
         this.backBuffered = new BufferedImage(400, 600, BufferedImage.TYPE_4BYTE_ABGR);
         this.graphics = this.backBuffered.getGraphics();
-    }
-
-    private void setupPlayer() {
-        this.player = new Player();
-        this.player.position.set(200, 300);
-        GameObjectManager.instance.add(this.player);
-    }
-
-    private void setupBackground() {
-        Background background = new Background();
-        background.position.set(200, 300);
-        GameObjectManager.instance.add(background);
-    }
-
-    private void setupEnemyHard() {
-        EnemyHard enemyHard = new EnemyHard();
-        enemyHard.velocity.set(0, 1);
-        enemyHard.position.set(0, 50);
-        GameObjectManager.instance.add(enemyHard);
     }
 
     @Override
@@ -90,6 +36,7 @@ public class GameCanvas extends JPanel {
 
     public void runAll() {
         GameObjectManager.instance.runAll();
+        SceneManager.instance.performSceneIfNeeded();
     }
 
     public void renderAll() {
