@@ -44,23 +44,7 @@ public class GameObjectManager {
                 .findFirst() //phan tu dau tien
                 .orElse(null); // neu ko lay dc tra null
     }
-    //Kieu Square
-    // Ta biet rang viet cac ham checkCollision cho tat ca cac truong hop va cham -> tra ve nhung con bi va cham: Square, Enmey...
-    //Cac ham check collision co dac diem chung: isAlive, check kieu cua gameobject == kieu tra ve, co boxcollider, box collider overlap
-    // Viet mot ham duy nhat va dung chung cho tat ca truong hop -> Generic de lam viec day
-    //Generic la gi?? Generic thuc ra no giong nhu mot nha may co day chuyen sx co dinh, chi khac nhau nguyen lieu dau vao, sp dau ra
-    //dc quyen kiem soat dau vao va dau ra, tuy nhien cai day chuyen luon co dinh.
-    //code: kieu tra ve, vao parameter dau vao deu phep thay doi thoai mai, nhung xu ly code ben trong luon co dinh va khong thay doi, luon
-    //luon la mau chung (doi khi goi a template)
 
-
-    //Generic:
-    /**
-     * Luon luon co mot kieu chung chung (hien tai dat la T), hoan toan dc phep thay doi khi sd
-     * ex T: long, String, GameObject ...
-     * trong truong hop nay T bi gioi han chi GameObject. boi vi tat ca con bi va cham ta muon lay ra deu ke thua tu GameObject
-     * Kieu tra ve dc thoai mai thay doi tuy y
-     * Class<T> cls: cho nay la noi ta muon thay doi kieu tra ve la kieu gi. Ex: muon kieu tra ve la Square thi truyen kieu Square vao de lay dc square*/
     public <T extends GameObject> T checkCollision(BoxCollider other, Class<T> cls) { //Square
         return (T) this.vector
                 .stream()
@@ -76,13 +60,6 @@ public class GameObjectManager {
 
     }
 
-
-    /**
-     * Khai bao recycle de tai su dung bat ky con gameObject nao minh mong muon.
-     * Tiep tuc su dung generic de tai su dung code
-     * DK tai su dung:
-     * - gameObject da chet
-     * - gameObject co kieu minh muon muon*/
     public <T extends GameObject> T recycle(Class<T> cls) {
         T t = (T) this.vector
                 .stream()
@@ -109,5 +86,10 @@ public class GameObjectManager {
 
     public void add(GameObject gameObject) {
         this.temp.add(gameObject);
+    }
+
+    public void clear() {
+        this.vector.clear();
+        this.temp.clear();
     }
 }

@@ -1,3 +1,4 @@
+import constant.GeoArcade;
 import input.MouseMotionInput;
 
 import javax.swing.*;
@@ -9,7 +10,7 @@ import java.awt.event.WindowEvent;
 public class GameWindow extends JFrame {
 
     GameCanvas gameCanvas;
-    private long lastTime = 0;
+    private long lastTime;
     public String name;
 
     public GameWindow() {
@@ -20,7 +21,7 @@ public class GameWindow extends JFrame {
     }
 
     private void setup() {
-        this.setSize(400, 600);
+        this.setSize(GeoArcade.Window.WIDTH, GeoArcade.Window.HEIGHT);
     }
 
     private void setupCanvas() {
@@ -49,7 +50,7 @@ public class GameWindow extends JFrame {
     public void gameLoop() {
         while (true) {
             long currentTime = System.nanoTime();
-            if (currentTime - this.lastTime >= 17_000_000) {
+            if (currentTime - this.lastTime >= GeoArcade.Window.DELAY_TIME) {
                 this.gameCanvas.runAll();
                 this.gameCanvas.renderAll();
                 this.lastTime = currentTime;

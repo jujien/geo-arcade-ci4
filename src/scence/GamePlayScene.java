@@ -26,12 +26,12 @@ public class GamePlayScene implements Scene {
         this.setCircleSquare();
         this.setupMatrix();
         this.setupEnemyHard();
-
     }
 
     @Override
     public void deinit() {
-
+        this.clip.stop();
+        GameObjectManager.instance.clear();
     }
 
     private void setupMatrix() {

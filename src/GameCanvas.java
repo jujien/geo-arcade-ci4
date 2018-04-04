@@ -1,4 +1,5 @@
 import base.GameObjectManager;
+import scence.GamePlayScene;
 import scence.SceneManager;
 
 import javax.swing.*;
@@ -9,13 +10,13 @@ import java.awt.image.BufferedImage;
 
 public class GameCanvas extends JPanel {
 
-
     BufferedImage backBuffered;
     Graphics graphics;
 
     public GameCanvas() {
         this.setup();
         this.setupBackBuffered();
+        SceneManager.instance.changeScene(new GamePlayScene());
     }
 
     private void setup() {

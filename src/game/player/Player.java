@@ -11,6 +11,8 @@ import physic.PhysicBody;
 import renderer.AnimationRenderer;
 import renderer.ImageRenderer;
 import renderer.Renderer;
+import scence.GameOverScene;
+import scence.SceneManager;
 import utils.Utils;
 
 public class Player extends GameObject implements PhysicBody, HitObject {
@@ -55,8 +57,9 @@ public class Player extends GameObject implements PhysicBody, HitObject {
 
     @Override
     public void getHit(GameObject gameObject) {
-        this.renderer = this.animationRenderer;
-        this.isAnimation = true;
+//        this.renderer = this.animationRenderer;
+//        this.isAnimation = true;
+        SceneManager.instance.changeScene(new GameOverScene());
     }
 
     @Override
